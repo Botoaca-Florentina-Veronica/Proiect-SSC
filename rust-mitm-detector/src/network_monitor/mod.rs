@@ -12,7 +12,7 @@ pub async fn start_sniffer(db: Database) {
         .expect("Nu s-a găsit interfață de rețea activă");
 
     let (_, mut rx) = match datalink::channel(&interface, Default::default()) {
-        Ok(datalink::Channel::Ethernet(_, rx)) => (_, rx),
+        Ok(datalink::Channel::Ethernet(_tx, rx)) => Ok((_tx, rx)),
         _ => panic!("Eroare creare canal datalink"),
     };
 
