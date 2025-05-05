@@ -1,23 +1,19 @@
-user-log-monitor/  
-├── src/  
-│   ├── main.rs            # Punct de intrare + bucla principală  
-│   ├── config/            # Configurații (e.g., ce fișiere de log să monitorizeze)  
-│   │   ├── mod.rs  
-│   │   └── config.rs  
-│   ├── models/            # Structuri de date pentru loguri și alerte  
-│   │   ├── mod.rs  
-│   │   ├── log_entry.rs   # Reprezentarea unei intrări din log  
-│   │   └── alert.rs       # Model pentru alerte (ex: "Multiple failed logins")  
-│   ├── detectors/         # Reguli de detectare a anomaliiilor  
-│   │   ├── mod.rs  
-│   │   ├── failed_logins.rs  # Detectează autentificări eșuate repetate  
-│   │   └── brute_force.rs    # Detectează atacuri de tip brute-force  
-│   ├── utils/             # Utilitare (e.g., parsare loguri)  
-│   │   ├── mod.rs  
-│   │   └── log_parser.rs  
-│   └── middleware/        # Gestionare alerte (logare, notificări)  
-│       ├── mod.rs  
-│       └── alert_handler.rs  
-├── Cargo.toml             # Dependințe Rust  
-├── README.md  
-└── .gitignore  
+rust-mitm-detector/
+├── src/
+│   ├── config/            # Configurarea MongoDB și variabile de mediu
+│   │   └── mod.rs
+│   ├── controllers/       # Logica aplicației (ex: salvare loguri, alertare)
+│   │   └── mod.rs
+│   ├── middleware/        # Dacă vrei să interceptezi cereri pentru analiză
+│   │   └── mod.rs
+│   ├── models/            # Structuri de date pentru MongoDB (ex: LogEntry)
+│   │   └── mod.rs
+│   ├── routes/            # Definire rute (REST API dacă expui date)
+│   │   └── mod.rs
+│   ├── network_monitor/   # Codul efectiv de monitorizare rețea (MITM detect)
+│   │   └── mod.rs
+│   ├── main.rs            # Punctul de start al aplicației
+│
+├── .env                   # Variabile (MONGO_URI etc.)
+├── Cargo.toml             # Configurația proiectului
+└── README.md              # Documentația
