@@ -1,0 +1,2 @@
+log_path = "/var/log/auth.log"
+max_failed_logins = 5
